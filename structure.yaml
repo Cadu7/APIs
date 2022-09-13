@@ -1,0 +1,16 @@
+package:
+  - main
+  - config
+  - web:
+      - controller
+      - exception
+      - ...
+  - domain:
+      - model
+      - dto
+      - mapper
+      - ...
+  - infra:
+      - repository
+      - kafka
+      - ...

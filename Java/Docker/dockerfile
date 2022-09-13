@@ -1,0 +1,13 @@
+# BUILD
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src src
+COPY pom.xml .
+RUN mvn clean package -DskipTests
+ 
+# IMAGE
+FROM openjdk:11-jre-slim
+COPY --from=build /target/*.jar java_api.jar
+ENV TZ=America/Sao_Paulo
+ 
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","java_api.jar"]
